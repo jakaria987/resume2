@@ -1,10 +1,30 @@
 import { Link } from "react-router-dom";
-import './Navbar.css'
-import logo from '../../../assets/logo.svg'
+import "./Navbar.css";
+import logo from "../../../assets/logo.svg";
 
 const Navbar = () => {
+  const navItems = (
+    <>
+      <li className="font-bold text-xl">
+        <Link to="/">Home</Link>
+      </li>
+
+      <li className="font-bold text-xl">
+        <Link to="">All Toys</Link>
+      </li>
+      <li className="font-bold text-xl">
+        <Link to="/blogs">My Toys</Link>
+      </li>
+      <li className="font-bold text-xl">
+        <Link to="/blogs">Add A Toy</Link>
+      </li>
+      <li className="font-bold text-xl">
+        <Link to="/blogs">Blogs</Link>
+      </li>
+    </>
+  );
   return (
-    <div className="navbar bg-teal-500">
+    <div className="navbar bg-teal-500 mt-4 py-4 h-24 rounded-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,75 +47,25 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a className="justify-between">
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navItems}
           </ul>
         </div>
         <Link className="btn btn-ghost normal-case text-xl">
-            <img className="logo" src={logo} alt="" />
-            <a className="text-3xl font-bold ml-4 text-white " href="#">The ToyToy Shop</a>
+          <img className="logo" src={logo} alt="" />
+          <a className="text-3xl font-bold ml-4 text-white " href="#">
+            The ToyToy Shop
+          </a>
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li tabIndex={0}>
-            <a>
-              Parent
-              <svg
-                className="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </a>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a>Blog</a>
-          </li>
-        </ul>
+      <div className="navbar-center ml-32 hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img src="" />
+          </div>
+        </label>
       </div>
     </div>
   );
