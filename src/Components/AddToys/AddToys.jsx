@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import './AddToys.css'
+import "./AddToys.css";
 
 const AddToys = () => {
   const {
@@ -8,23 +8,28 @@ const AddToys = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch('http://localhost:5000/postToys',
-    {
-        method: 'POST',
-        headers: {
-            "content-type" : "application/json"
-        },
-        body : JSON.stringify(data)
+    fetch("http://localhost:5000/postToys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         console.log(result);
-    })
+      });
   };
+  const handleAlert = () => {
+    alert('Added successfully');
+    
+  }
 
   return (
     <div>
-        <h1 className="text-3xl text-center font-bold text-teal-900" >Do you want to add a toy? </h1>
+      <h1 className="text-3xl text-center font-bold text-teal-900">
+        Do you want to add a toy?{" "}
+      </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         {errors.exampleRequired && <span>This field is required</span>}
         <input
@@ -50,12 +55,14 @@ const AddToys = () => {
           {...register("seller_email")}
           placeholder="seller email"
           //   defaultValue="seller email"
-        /><br />
+        />
+        <br />
 
         <select className="text-input" {...register("sub_category")}>
-          <option value="Engineering">Math Toys</option>
-          <option value="Editor">Language Toys</option>
-          <option value="writer">Science Toys</option>
+          <option value="Science Toys">Science Toys</option>
+          <option value="Math Toys">Math Toys</option>
+          <option value="Engineering Tools">Engineering Tools</option>
+          <option value="Engineering Kits">Engineering Kits</option>
         </select>
         <input
           className="text-input"
@@ -74,7 +81,8 @@ const AddToys = () => {
           {...register("Available_quantity")}
           placeholder="Available quantity"
           //   defaultValue="seller email"
-        /><br />
+        />
+        <br />
         <input
           className="text-input"
           {...register("Detail_description")}
@@ -83,7 +91,9 @@ const AddToys = () => {
         />
         <br />
 
-        <button className="extra btn btn-success"><input  type="submit" value={"Add a toy"} /></button>
+        <button onClick={handleAlert} className="extra btn btn-success">
+          <input type="submit" value={"Add a toy"}  />
+        </button>
       </form>
     </div>
   );

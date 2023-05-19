@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import MathToys from './MathToys';
-import LanguageToys from './LanguageToys';
-import ScienceToys from './ScienceToys';
+import { useEffect, useState } from "react";
+import MathToys from "./MathToys";
+import LanguageToys from "./LanguageToys";
+import ScienceToys from "./ScienceToys";
 
-const TabSystem = () => {
+const ShopCategory = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
@@ -22,31 +22,24 @@ const TabSystem = () => {
         return null;
     }
   };
-  useEffect(() => {
-    fetch('http://localhost:5000/allToys')
-    .then(res => res.json())
-    .then(result => {
-      console.log(result);
-    })
-  },[])
 
   return (
     <div>
       <div className="tab-container">
         <div
-          className={`tab ${activeTab === 0 ? 'active' : ''}`}
+          className={`tab ${activeTab === 0 ? "active" : ""}`}
           onClick={() => handleTabClick(0)}
         >
           Math Toys
         </div>
         <div
-          className={`tab ${activeTab === 1 ? 'active' : ''}`}
+          className={`tab ${activeTab === 1 ? "active" : ""}`}
           onClick={() => handleTabClick(1)}
         >
           Language Toys
         </div>
         <div
-          className={`tab ${activeTab === 2 ? 'active' : ''}`}
+          className={`tab ${activeTab === 2 ? "active" : ""}`}
           onClick={() => handleTabClick(2)}
         >
           Science Toys
@@ -57,4 +50,4 @@ const TabSystem = () => {
   );
 };
 
-export default TabSystem;
+export default ShopCategory;
