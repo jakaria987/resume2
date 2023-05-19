@@ -15,8 +15,6 @@ const AllToys = () => {
 
   return (
     <div>
-      okkkkkkkk
-      
         <div className="overflow-x-auto">
           <table className="table table-compact w-full">
             {/* head */}
