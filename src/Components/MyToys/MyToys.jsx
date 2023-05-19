@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
-import './MyToys.css'
+import "./MyToys.css";
+import UpdateModal from "./UpdateModal";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,24 @@ const MyToys = () => {
         setToys(data);
       });
   }, [user]);
+
+  const handleDelete = (id) => {
+    const proceed = confirm('Are you Sure? ');
+    if(proceed){
+      fetch(`http://localhost:5000/myToys/${id}`, {
+        method: "DELETE"
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.deletedCount > 0){
+          alert('Deleted Successfully');
+          const remaining = toys.filter(toy => toy._id !== id);
+          setToys(remaining);
+        }
+      })
+    }
+  }
 
   return (
     <div>
@@ -38,16 +57,33 @@ const MyToys = () => {
             {toys.map((toy, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td><img className="imgSize" src={toy.Picture_URL} alt="" /></td>
+                <td>
+                  <img className="imgSize" src={toy.Picture_URL} alt="" />
+                </td>
                 <td>{toy.Name}</td>
                 <td>{toy.seller_name}</td>
                 <td>{toy.price}</td>
                 <td>{toy.Available_quantity}</td>
                 <td>
-                  <button className="btn btn-success btn-sm">Edit</button>
+                  <button>Edit</button>
                 </td>
                 <td>
-                  <button className="btn btn-success btn-sm">Delete</button>
+                  <button onClick={() => handleDelete(toy._id)} className="btn btn-square btn-sm">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                 </td>
               </tr>
             ))}

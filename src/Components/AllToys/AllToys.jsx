@@ -18,7 +18,7 @@ const AllToys = () => {
     fetch(`http://localhost:5000/toySearch/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setToys(data);
       });
   };
 
@@ -28,9 +28,10 @@ const AllToys = () => {
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"
-          className="p-1"
+          className="border border-teal-600 px-4 py-3 mr-4 bg-teal-50 rounded-md"
+          placeholder="Search by toy name"
         />{" "}
-        <button>Search</button>
+        <button className="btn btn-success btn-md my-8" onClick={handleSearch}>Click here</button>
       </div>
 
       <div className="overflow-x-auto">
