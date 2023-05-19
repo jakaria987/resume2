@@ -1,26 +1,52 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, {  useContext, useState } from "react";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../Firebase/Firebase.config";
 import { AuthContext } from "../../Providers/AuthProviders";
 
-const Login = () => {
-  const { signIn } = useContext(AuthContext);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password)
-      .then((result) => {
+const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const [error, setError] = useState("");
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const handleLogin = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            setError(loggedUser);
+            navigate(from, {replace:true})
+        })
+        .catch(error => {
+            setError("something doing wrong");
+        })
+    }
+    const [ok, setOk] = useState('');
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+      signInWithPopup(auth, googleProvider)
+      .then(result => {
         const user = result.user;
         console.log(user);
+        setOk("Successfully Login by google")
       })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+      .catch(error => {
+        console.log("error");
+      })
+    }
   return (
     <div className="hero min-h-screen bg-teal-100">
       <div className="hero-content w-1/2 py-10">
@@ -71,6 +97,7 @@ const Login = () => {
                 </button>
               </Link>{" "}
             </p>
+            <button onClick={handleGoogleSignIn} className="mt-4 btn-success">SIgn in with Google</button>
           </div>
         </div>
       </div>

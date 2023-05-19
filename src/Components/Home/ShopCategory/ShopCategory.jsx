@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MathToys from './MathToys';
 import LanguageToys from './LanguageToys';
 import ScienceToys from './ScienceToys';
@@ -22,6 +22,13 @@ const TabSystem = () => {
         return null;
     }
   };
+  useEffect(() => {
+    fetch('http://localhost:5000/allToys')
+    .then(res => res.json())
+    .then(result => {
+      console.log(result);
+    })
+  },[])
 
   return (
     <div>

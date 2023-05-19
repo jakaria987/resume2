@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Navbar = () => {
   const navItems = (
@@ -10,19 +12,25 @@ const Navbar = () => {
       </li>
 
       <li className="font-bold text-xl">
-        <Link to="">All Toys</Link>
+        <Link to="/allToys">All Toys</Link>
       </li>
       <li className="font-bold text-xl">
-        <Link to="/blogs">My Toys</Link>
+        <Link to="/myToys">My Toys</Link>
       </li>
       <li className="font-bold text-xl">
-        <Link to="/blogs">Add A Toy</Link>
+        <Link to="/addToys">Add A Toy</Link>
       </li>
       <li className="font-bold text-xl">
         <Link to="/blogs">Blogs</Link>
       </li>
     </>
   );
+  const {user, logOut} = useContext(AuthContext);
+    const handleLogOut = () => {
+      logOut()
+      .then()
+      .catch(error => console.log(error));
+    }
   return (
     <div className="navbar bg-teal-500 mt-4 py-4 h-24 rounded-lg">
       <div className="navbar-start">
@@ -61,11 +69,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img src="" />
-          </div>
-        </label>
+      {user ? (
+                  <button onClick={handleLogOut} variant="dark">Logout</button>
+                ) : (
+                  <Link to="/login">
+                    <button variant="dark">Login</button>
+                  </Link>
+                )}
       </div>
     </div>
   );

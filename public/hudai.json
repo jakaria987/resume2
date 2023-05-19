@@ -1,0 +1,12 @@
+{
+    "toy": {
+      "picture_url": "https://example.com/toy.jpg",
+      "name": "ABC Math Blocks",
+      "sub_category": "Math Toys",
+      "price": 19.99,
+      "rating": 4.5,
+      "available_quantity": 10,
+      "description": "The ABC Math Blocks are a fun and educational toy that helps children learn basic math concepts while also improving their letter recognition skills. Each block features a different number and a corresponding letter. Kids can stack and arrange the blocks to form simple math equations or spell out words. The bright colors and engaging design make learning math an enjoyable experience. Suitable for children aged 3 and above."
+    }
+  }
+  
