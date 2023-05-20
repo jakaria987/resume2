@@ -1,10 +1,16 @@
 import React from 'react';
 import err from '../../assets/error.jpg'
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
         <div>
-            <img className='mx-auto mt-4' src={err}alt="" />
+            <img className='mx-auto my-4 ' src={err}alt="" />
+            <div className='text-center'>
+            <button className='btn btn-success'>
+            <Link className='text-black' to='/'>Click here to go to home page</Link>
+            </button>
+            </div>
         </div>
     );
 };

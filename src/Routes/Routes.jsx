@@ -60,10 +60,15 @@ const router = createBrowserRouter([
         path:'blogs',
         element: <Blogs></Blogs>
       }
-      
     ],
     
+
+    
   },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
+  }
 ]);
 
 export default router;
