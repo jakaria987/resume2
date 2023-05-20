@@ -2,10 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import "./MyToys.css";
 import UpdateModal from "./UpdateModal";
+import { Link, json } from "react-router-dom";
+import UpdateToys from "./UpdateToys";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user?.email}`)
@@ -31,6 +34,29 @@ const MyToys = () => {
         }
       })
     }
+  }
+
+  const handleUpdate = (id) => {
+    fetch(`http://localhost:5000/myToys/${id}`, {
+      method :"PATCH",
+      headers: {
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify({status : 'update'})
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(modifiedCount > 0){
+        const remaining = toys.filter(toy => toy._id !== id);
+        const updated = toys.find(toy => toy._id === id);
+        updated.status = 'updated';
+        const newToy = [updated, ...remaining];
+        setToys(newToy);
+
+        // alert('Updated done');
+      }
+    })
   }
 
   return (
@@ -64,8 +90,17 @@ const MyToys = () => {
                 <td>{toy.seller_name}</td>
                 <td>{toy.price}</td>
                 <td>{toy.Available_quantity}</td>
-                <td>
-                  <button>Edit</button>
+                <td>  
+                  <button 
+                  onClick={()=> handleUpdate(toy._id)}
+                  > 
+                  edit
+                  {/* <UpdateToys 
+                  key={toy._id}
+                  toy={toy}
+                  handleUpdate={handleUpdate}
+                  ></UpdateToys> */}
+                  </button>
                 </td>
                 <td>
                   <button onClick={() => handleDelete(toy._id)} className="btn btn-square btn-sm">
