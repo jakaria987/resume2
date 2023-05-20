@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Toy = ({toy}) => {
     const {Picture_URL, Name, price, Rating} = toy || {};
@@ -14,6 +15,11 @@ const Toy = ({toy}) => {
           <h2 className="card-title text-3xl font-bold text-teal-900">{Name}</h2>
           <p className="text-xl font-bold text-teal-900">{price}$</p>
           <p className="text-xl font-bold text-teal-900">Rating: {Rating}</p>
+          <Link className='mt-4' to={`/toyDetails/${toy._id}`}>
+                    <button className="btn btn-success btn-md">
+                      View Details
+                    </button>
+            </Link>
         </div>
       </div>
       );

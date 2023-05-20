@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import "./AddToys.css";
 
-const AddToys = () => {
+const AddToys = (e) => {
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const AddToys = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        e.target.reset(result);
       });
   };
   const handleAlert = () => {
@@ -94,6 +94,7 @@ const AddToys = () => {
         <button onClick={handleAlert} className="extra btn btn-success">
           <input type="submit" value={"Add a toy"}  />
         </button>
+        
       </form>
     </div>
   );

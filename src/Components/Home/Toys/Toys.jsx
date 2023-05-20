@@ -31,22 +31,24 @@ const Toys = () => {
       <h1 className="title text-center mt-5 p-5">Available Toys</h1>
       <div className="tab-container text-center">
         <div className="text-center w-100 m-auto">
-          <div className="tabs d-flex justify-content-center align-items-center">
+          <div className="tabs d-flex  justify-content-center align-items-center">
+            {/* <div className="grid grid-cols-2"> */}
             <div
               onClick={() => handleTabClick("ScienceToys")}
-              className={`tab  tab2 tab3 ScienceToys ${
+              className={`tab tab2 tab3 ScienceToys ${
                 activeTab == "ScienceToys" ? " bg-danger text-black" : ""
               }`}
             >
-              Science Toys
+              ScienceToys
             </div>
+            {/* </div> */}
             <div
               onClick={() => handleTabClick("MathToys")}
               className={`tab  tab2 tab3 MathToys ${
                 activeTab == "MathToys" ? " bg-danger text-black" : ""
               }`}
             >
-              Math Toys
+              MathToys
             </div>
             <div
               onClick={() => handleTabClick("EngineeringKits")}
@@ -54,7 +56,7 @@ const Toys = () => {
                 activeTab == "EngineeringKits" ? " bg-danger text-black" : ""
               }`}
             >
-              Engineering Kits
+              EngineeringKits
             </div>
           </div>
         </div>

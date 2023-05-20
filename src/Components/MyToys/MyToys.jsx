@@ -10,6 +10,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
 
+
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user?.email}`)
       .then((res) => res.json())
@@ -37,6 +38,7 @@ const MyToys = () => {
   }
 
   const handleUpdate = (data) => {
+    console.log(data);
     fetch(`http://localhost:5000/myToys/${data.id}`, {
       method :"PATCH",
       headers: {
@@ -47,14 +49,16 @@ const MyToys = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      if(modifiedCount > 0){
-        // const remaining = toys.filter(toy => toy._id !== id);
-        // const updated = toys.find(toy => toy._id === id);
-        // updated.status = 'updated';
+      if(data.modifiedCount > 0){
+
+        // const remaining = toys.filter(toy => toy._id !== data.id);
+        // const updated = toys.find(toy => toy._id === data.id);
+        // updated.price = 'updated';
+        // updated.price = data.price;
         // const newToy = [updated, ...remaining];
         // setToys(newToy);
 
-        // alert('Updated done');
+        alert('Updated successfully please reload the browser to see the update');
       }
     })
   }
