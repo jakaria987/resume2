@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Toy from "./Toy";
-// import "./Jobs.css";
 
 const Toys = () => {
 
@@ -12,7 +11,7 @@ const Toys = () => {
       .then((res) => res.json())
       .then((result) => {
         setToys(result);
-        console.log(result);
+        // console.log(result);
       });
   }, [activeTab]);
 
@@ -23,13 +22,14 @@ const Toys = () => {
   };
 
   return (
-    <div>
+    <div className="bg-teal-100 pb-4">
 
 
 
 
-      <h1 className="title text-center mt-5 p-5">Available Toys</h1>
-      <div className="tab-container text-center">
+<hr className="border border-teal-300 mt-2 " />
+      <h1 className="title text-center p-5 text-3xl font-bold text-teal-600">Available Toys</h1>
+      <div className="tab-container text-center ">
         <div className="text-center w-100 m-auto">
           <div className="tabs d-flex  justify-content-center align-items-center">
             {/* <div className="grid grid-cols-2"> */}
