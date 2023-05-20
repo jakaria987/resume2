@@ -2,13 +2,12 @@ import logo from '../../../assets/logo.svg'
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
+    <footer className="footer p-10 bg-teal-100 text-base-content">
       <div>
         <img className='logo' src={logo} alt="" />
-        <p>
-          ACME Industries Ltd.
-          <br />
-          Providing reliable tech since 1992
+        <h1 className='font-bold text-2xl text-teal-900'>The ToyToy shop </h1>
+        <p className='font-bold text-teal-900'>
+        Come visit our toy shop today <br />  and let the magic of play inspire <br />  you. We can't wait to see the smiles <br />  on the faces of children and parents alike.
         </p>
       </div>
       <div>

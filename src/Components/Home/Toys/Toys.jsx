@@ -30,8 +30,8 @@ const Toys = () => {
 <hr className="border border-teal-300 mt-2 " />
       <h1 className="title text-center p-5 text-3xl font-bold text-teal-600">Available Toys</h1>
       <div className="tab-container text-center ">
-        <div className="text-center w-100 m-auto">
-          <div className="tabs d-flex  justify-content-center align-items-center">
+        <div className="text-center w-100 mx-auto flex items-center">
+          <div className="tabs mx-auto ">
             {/* <div className="grid grid-cols-2"> */}
             <div
               onClick={() => handleTabClick("ScienceToys")}
@@ -39,7 +39,7 @@ const Toys = () => {
                 activeTab == "ScienceToys" ? " bg-danger text-black" : ""
               }`}
             >
-              ScienceToys
+              <button className="text-2xl ">ScienceToys</button>
             </div>
             {/* </div> */}
             <div
@@ -48,7 +48,7 @@ const Toys = () => {
                 activeTab == "MathToys" ? " bg-danger text-black" : ""
               }`}
             >
-              MathToys
+              <button className="text-2xl ">MathToys</button>
             </div>
             <div
               onClick={() => handleTabClick("EngineeringKits")}
@@ -56,7 +56,8 @@ const Toys = () => {
                 activeTab == "EngineeringKits" ? " bg-danger text-black" : ""
               }`}
             >
-              EngineeringKits
+            <button className="text-2xl ">EngineeringKits</button>
+
             </div>
           </div>
         </div>

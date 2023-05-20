@@ -5,6 +5,7 @@ const ExtraSectionTwo = () => {
   return (
     <div className="bg-teal-100 ">
         <hr className="border border-teal-300 mt-2" />
+        
       <div
         className="hero min-h-screen mt-16 "
         style={{

@@ -42,8 +42,8 @@ const SignUp = () => {
             <h1 className="text-4xl text-center mb-8 font-bold text-teal-900">
               Please Sign Up
             </h1>
-            <h4 className="text-teal-600">{ok}</h4>
-            <h4 className="text-teal-600">{error}</h4>
+            <h4 className="text-teal-600 text-center text-3xl">{ok}</h4>
+            <h4 className="text-teal-600 text-center text-3xl">{error}</h4>
             <form onSubmit={handleSignUp}>
               <div className="form-control">
                 <label className="label">

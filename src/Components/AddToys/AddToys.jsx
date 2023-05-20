@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import "./AddToys.css";
 
-const AddToys = (e) => {
+const AddToys = () => {
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const AddToys = (e) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        e.target.reset(result);
+        console.log(result);
       });
   };
   const handleAlert = () => {
