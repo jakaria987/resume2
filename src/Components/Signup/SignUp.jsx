@@ -1,8 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const {createUser} = useContext(AuthContext);
     const [ok, setOk] = useState('');
@@ -16,16 +20,17 @@ const SignUp = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,photo, email, password);
+    console.log(name, photo, email, password);
     createUser(email, password)
     .then(result => {
         const createdUser = result.user;
         console.log(createdUser);
         setOk("registration Successful");
+        navigate(from, {replace:true})
 
     })
     .catch(error => {
-        setError("something doing wrong");
+      setError("something wrong");
     })
   };
 
@@ -37,6 +42,8 @@ const SignUp = () => {
             <h1 className="text-4xl text-center mb-8 font-bold text-teal-900">
               Please Sign Up
             </h1>
+            <h4 className="text-teal-600">{ok}</h4>
+            <h4 className="text-teal-600">{error}</h4>
             <form onSubmit={handleSignUp}>
               <div className="form-control">
                 <label className="label">
@@ -47,6 +54,20 @@ const SignUp = () => {
                   name="name"
                   placeholder="Enter your Name"
                   className="input input-bordered"
+                  
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-teal-900">Photo Url : </span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Enter your photo url"
+                  className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -58,6 +79,7 @@ const SignUp = () => {
                   name="email"
                   placeholder="Enter your email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -69,6 +91,7 @@ const SignUp = () => {
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control mt-6 ">

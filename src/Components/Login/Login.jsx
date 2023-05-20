@@ -4,6 +4,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { set } from "react-hook-form";
 
 
 const Login = () => {
@@ -44,7 +45,7 @@ const Login = () => {
         setOk("Successfully Login by google")
       })
       .catch(error => {
-        console.log("error");
+        setError("something wrong");
       })
     }
   return (
@@ -52,6 +53,9 @@ const Login = () => {
       <div className="hero-content w-1/2 py-10">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body bg-teal-400 rounded-lg">
+            <h4 className="text-teal-600">{ok}</h4>
+            <h4 className="text-teal-600">{error}</h4>
+
             <h1 className="text-4xl text-center mb-8 font-bold text-teal-900">
               Please Login here
             </h1>
@@ -65,6 +69,7 @@ const Login = () => {
                   name="email"
                   placeholder="Enter your email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -76,6 +81,7 @@ const Login = () => {
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">

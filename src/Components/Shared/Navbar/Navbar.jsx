@@ -60,7 +60,7 @@ const Navbar = () => {
         </div>
         <Link className="btn btn-ghost normal-case text-xl">
           <img className="logo" src={logo} alt="" />
-          <a className="text-3xl font-bold ml-4 text-white " href="#">
+          <a className="text-3xl font-bold ml-4 text-teal-950 " href="#">
             The ToyToy Shop
           </a>
         </Link>
@@ -70,10 +70,10 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
       {user ? (
-                  <button onClick={handleLogOut} variant="dark">Logout</button>
+                  <button className="lBtn" onClick={handleLogOut} variant="dark">Logout</button>
                 ) : (
                   <Link to="/login">
-                    <button variant="dark">Login</button>
+                    <button className="lBtn" variant="dark">Login</button>
                   </Link>
                 )}
       </div>

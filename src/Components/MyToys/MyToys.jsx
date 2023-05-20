@@ -36,23 +36,23 @@ const MyToys = () => {
     }
   }
 
-  const handleUpdate = (id) => {
-    fetch(`http://localhost:5000/myToys/${id}`, {
+  const handleUpdate = (data) => {
+    fetch(`http://localhost:5000/myToys/${data.id}`, {
       method :"PATCH",
       headers: {
         "content-type" : "application/json"
       },
-      body: JSON.stringify({status : 'update'})
+      body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(data => {
       console.log(data);
       if(modifiedCount > 0){
-        const remaining = toys.filter(toy => toy._id !== id);
-        const updated = toys.find(toy => toy._id === id);
-        updated.status = 'updated';
-        const newToy = [updated, ...remaining];
-        setToys(newToy);
+        // const remaining = toys.filter(toy => toy._id !== id);
+        // const updated = toys.find(toy => toy._id === id);
+        // updated.status = 'updated';
+        // const newToy = [updated, ...remaining];
+        // setToys(newToy);
 
         // alert('Updated done');
       }
@@ -92,14 +92,14 @@ const MyToys = () => {
                 <td>{toy.Available_quantity}</td>
                 <td>  
                   <button 
-                  onClick={()=> handleUpdate(toy._id)}
+                  // onClick={()=> handleUpdate(toy._id)}
                   > 
-                  edit
-                  {/* <UpdateToys 
+                  {/* edit */}
+                  <UpdateToys 
                   key={toy._id}
                   toy={toy}
                   handleUpdate={handleUpdate}
-                  ></UpdateToys> */}
+                  ></UpdateToys>
                   </button>
                 </td>
                 <td>

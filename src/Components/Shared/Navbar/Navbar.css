@@ -3,3 +3,10 @@
     width: 100px;
     
 }
+.lBtn{
+    background-color: teal;
+    padding: 20px 30px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+}

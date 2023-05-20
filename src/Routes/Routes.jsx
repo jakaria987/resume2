@@ -28,16 +28,18 @@ const router = createBrowserRouter([
       {
         path: "toyDetails/:id",
         element: (
-          // <PrivateRoute>
+          <PrivateRoute>
           <ViewDetails></ViewDetails>
-          // </PrivateRoute>
+          </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allToys/${params.id}`),
       },
       {
         path: "myToys",
-        element: <MyToys></MyToys>,
+        element: <PrivateRoute>
+          <MyToys></MyToys>
+        </PrivateRoute>,
       },
       {
         path: "addToys",

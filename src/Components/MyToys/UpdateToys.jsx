@@ -1,33 +1,55 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateToys = ({toy, handleUpdate}) => {
     const {price, Available_quantity,Detail_description, _id} = toy
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+
+    // const loadData = useLoaderData();
+
+    const onSubmit = (data) => {
+      console.log(data);
+      handleUpdate({
+        id:_id,
+        ...data
+      })
+    }
+
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="my-modal-5" className="btn">
-        Edit
+      <label htmlFor={`my-modal-${_id}`} className="btn">
+        {/* <button onClick={()=> {handleUpdate(_id)}}> */}
+          Edit it
+        {/* </button> */}
         
       </label>
 
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+      <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-          <div className="modal-action">
-            <label htmlFor="my-modal-5" className="btn">
-            <button onClick={()=> handleUpdate(_id)}>
-          update it
-        </button>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className="text-input"
+          {...register("price")}
+          placeholder="price"
+            defaultValue={price}
+        /> 
+          <button type="submit">Update</button>
+        
+          <div className="">
+            <label  htmlFor={`my-modal-${_id}`} className="btn">
+              close
             </label>
           </div>
+          </form> 
         </div>
       </div>
     </div>
