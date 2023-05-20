@@ -4,7 +4,7 @@ import backgroundImage  from '../../../assets/e21.jpg'
 const ExtraSectionTwo = () => {
   return (
     <div className="bg-teal-100 ">
-        <hr className="border border-teal-300 mt-2" />
+        <hr className="border border-teal-100 mt-2" />
         
       <div
         className="hero min-h-screen mt-16 "
@@ -30,6 +30,7 @@ const ExtraSectionTwo = () => {
           </div>
         </div>
       </div>
+      <hr className="border border-teal-300 mb-2" />
     </div>
   );
 };

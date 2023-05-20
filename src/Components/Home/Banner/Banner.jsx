@@ -3,7 +3,8 @@ import './Banner.css'
 const Banner = () => {
   return (
     <div>
-        <h3 className="text-4xl text-teal-900 font-bold text-center bg-teal-100 pt-12">Welcome to Our ToyToy Shop</h3>
+        <h3 className="text-4xl text-teal-900 font-bold text-center bg-teal-100 pt-12 pb-3">Welcome to Our ToyToy Shop</h3>
+        <hr className='w-1/2 mx-auto border-teal-950 ' />
     <div className="hero min-h-screen bg-teal-100">
         
       <div className="hero-content flex-col lg:flex-row-reverse">

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import "./MyToys.css";
-import UpdateModal from "./UpdateModal";
 import { Link, json } from "react-router-dom";
 import UpdateToys from "./UpdateToys";
 
@@ -58,7 +57,7 @@ const MyToys = () => {
         // const newToy = [updated, ...remaining];
         // setToys(newToy);
 
-        alert('Updated successfully please reload the browser to see the update');
+        alert('Updated successfully please reload the browser to see the updates');
       }
     })
   }
@@ -96,9 +95,7 @@ const MyToys = () => {
                 <td>{toy.Available_quantity}</td>
                 <td>  
                   <button 
-                  // onClick={()=> handleUpdate(toy._id)}
                   > 
-                  {/* edit */}
                   <UpdateToys 
                   key={toy._id}
                   toy={toy}

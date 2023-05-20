@@ -42,10 +42,23 @@ const UpdateToys = ({toy, handleUpdate}) => {
           placeholder="price"
             defaultValue={price}
         /> 
-          <button type="submit">Update</button>
+        <input
+          className="text-input"
+          {...register("Available_quantity")}
+          placeholder="Available quantity"
+          //   defaultValue="seller email"
+        /> 
+        <input
+          className="text-input"
+          {...register("Detail_description")}
+          placeholder="Detail description"
+          //   defaultValue="seller email"
+        />
+        <br />
+          <button className="btn btn-success btn-lg my-4" type="submit">Update</button>
         
           <div className="">
-            <label  htmlFor={`my-modal-${_id}`} className="btn">
+            <label  htmlFor={`my-modal-${_id}`} className="btn btn-success">
               close
             </label>
           </div>
