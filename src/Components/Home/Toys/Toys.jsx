@@ -8,7 +8,7 @@ const Toys = () => {
   const [activeTab, setActiveTab] = useState("ScienceToys");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys/${activeTab}`)
+    fetch(`http://localhost:5000/allToy/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setToys(result);

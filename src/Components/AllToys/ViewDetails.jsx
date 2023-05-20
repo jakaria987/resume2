@@ -14,6 +14,7 @@ const ViewDetails = () => {
   //   }, [id]);
 
   const toyDetails = useLoaderData();
+  console.log(toyDetails);
   const { Name,Picture_URL,seller_name,seller_email,price,Rating,Available_quantity,Detail_description } = toyDetails;
 
   return (

@@ -3,27 +3,19 @@ import React from 'react';
 const Toy = ({toy}) => {
     const {Picture_URL, Name, price, Rating} = toy || {};
     return (
-        <div className="col-md-12 col-sm-12 col-lg-6 ">
-          <div className="row d-flex justify-content-center align-items-center single-card">
-            <div className="col-md-4">
-              <img
-                className="w-100"
-                src={Picture_URL}
-                alt=""
-              />
-            </div>
-            <div className="col-md-8 card-right">
-              <h2>{Name }</h2>
-              <p>{price}</p>
-              <p>{Rating}</p>
-              {/* <div className="text-end">
-                <button>
-                  Apply 
-                </button>
-              </div> */}
-            </div>
-          </div>
+        <div className="card  bg-teal-200 shadow-xl mx-auto my-4 w-1/4">
+        <figure className="px-10 pt-10">
+          <img
+            src={Picture_URL}
+            className="rounded-xl"
+          />
+        </figure>
+        <div className="card-body items-center text-center ">
+          <h2 className="card-title text-3xl font-bold text-teal-900">{Name}</h2>
+          <p className="text-xl font-bold text-teal-900">{price}$</p>
+          <p className="text-xl font-bold text-teal-900">Rating: {Rating}</p>
         </div>
+      </div>
       );
 };
 
