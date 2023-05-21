@@ -33,7 +33,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allToys/${params.id}`),
+          fetch(`https://assignment11-server-rho.vercel.app/allToys/${params.id}`),
       },
       {
         path: "myToys",
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       // {
       //   path: 'updateToy/:id',
       //   element:<UpdateToys></UpdateToys>,
-      //   loader: ({params}) => fetch(`http://localhost:5000/myToys/${params.id}`)
+      //   loader: ({params}) => fetch(`https://assignment11-server-rho.vercel.app/myToys/${params.id}`)
       // },
       {
         path: "login",

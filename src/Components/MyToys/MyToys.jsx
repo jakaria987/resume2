@@ -11,7 +11,7 @@ const MyToys = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.email}`)
+    fetch(`https://assignment11-server-rho.vercel.app/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -21,7 +21,7 @@ const MyToys = () => {
   const handleDelete = (id) => {
     const proceed = confirm('Are you Sure? ');
     if(proceed){
-      fetch(`http://localhost:5000/myToys/${id}`, {
+      fetch(`https://assignment11-server-rho.vercel.app/myToys/${id}`, {
         method: "DELETE"
       })
       .then(res => res.json())
@@ -38,7 +38,7 @@ const MyToys = () => {
 
   const handleUpdate = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/myToys/${data.id}`, {
+    fetch(`https://assignment11-server-rho.vercel.app/myToys/${data.id}`, {
       method :"PATCH",
       headers: {
         "content-type" : "application/json"
@@ -91,8 +91,8 @@ const MyToys = () => {
                 </td>
                 <td>{toy.Name}</td>
                 <td>{toy.seller_name}</td>
-                <td>{toy.price}</td>
-                <td>{toy.Available_quantity}</td>
+                <td>{toy.price}$</td>
+                <td>{toy.Available_quantity} Psc</td>
                 <td>  
                   <button 
                   > 

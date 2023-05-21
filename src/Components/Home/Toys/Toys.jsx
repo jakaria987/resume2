@@ -7,7 +7,7 @@ const Toys = () => {
   const [activeTab, setActiveTab] = useState("ScienceToys");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToy/${activeTab}`)
+    fetch(`https://assignment11-server-rho.vercel.app/allToy/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setToys(result);

@@ -87,7 +87,7 @@ const SignUp = () => {
                   <span className="label-text text-teal-900">Password : </span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"

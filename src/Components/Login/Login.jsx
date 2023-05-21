@@ -42,10 +42,13 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replace:true})
         setOk("Successfully Login by google")
+
       })
       .catch(error => {
         setError("something wrong");
+        
       })
     }
   return (
@@ -77,7 +80,7 @@ const Login = () => {
                   <span className="label-text text-teal-900">Password : </span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"

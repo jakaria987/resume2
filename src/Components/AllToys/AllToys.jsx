@@ -7,15 +7,16 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://assignment11-server-rho.vercel.app/allToys")
       .then((res) => res.json())
       .then((result) => {
-        setToys(result);
+        setToys(result.slice(0,19));
+        
       });
   }, []);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearch/${searchText}`)
+    fetch(`https://assignment11-server-rho.vercel.app/toySearch/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -33,6 +34,7 @@ const AllToys = () => {
         />{" "}
         <button className="btn btn-success btn-md my-8" onClick={handleSearch}>Click here</button>
       </div>
+      <h1 className="text-center text-teal-900 text-2xl font-bold">Max Limit : 20</h1>
 
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
@@ -56,8 +58,8 @@ const AllToys = () => {
                 <td>{toy.seller_name}</td>
                 <td>{toy.Name}</td>
                 <td>{toy.sub_category}</td>
-                <td>{toy.price}</td>
-                <td>{toy.Available_quantity}</td>
+                <td>{toy.price}$</td>
+                <td>{toy.Available_quantity} Pcs</td>
                 <td>
                   <Link to={`/toyDetails/${toy._id}`}>
                     <button className="btn btn-success btn-md">

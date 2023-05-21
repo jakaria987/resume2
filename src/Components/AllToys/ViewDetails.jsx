@@ -7,7 +7,7 @@ const ViewDetails = () => {
   // const [toyDetails, setToyDetails] = useState({});
 
   // useEffect(() => {
-  //     fetch(`http://localhost:5000/toyDetails/${id}`)
+  //     fetch(`https://assignment11-server-rho.vercel.app/toyDetails/${id}`)
   //       .then((res) => res.json())
   //       .then((data) => setToyDetails(data))
   //       .catch((error) => console.error(error))
@@ -33,7 +33,7 @@ const ViewDetails = () => {
           <p className="text-xl font-bold text-teal-900">Seller email: {seller_email}</p>
           <p className="text-xl font-bold text-teal-900">{price}$</p>
           <p className="text-xl font-bold text-teal-900">Rating: {Rating}</p>
-          <p className="text-xl font-bold text-teal-900">Available_quantity: {Available_quantity}</p>
+          <p className="text-xl font-bold text-teal-900">Available_quantity: {Available_quantity} Psc</p>
           <p className="text-xl font-bold text-teal-900">{Detail_description}</p>
         </div>
       </div>
